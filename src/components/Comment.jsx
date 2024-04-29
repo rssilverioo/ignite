@@ -1,8 +1,14 @@
+/* eslint-disable react/prop-types */
 import { ThumbsUp, Trash } from '@phosphor-icons/react';
 import styles from './Comment.module.css';
 import { Avatar } from './Avatar';
 
-export function Comment({content}) {
+export function Comment({ content, onDeleteComment }) {
+
+
+  function handleDeleteComment() {
+    onDeleteComment(content);
+  } 
   return (
     <div className={styles.comment}>
       <Avatar hasBorder={false} src="https://avatars.githubusercontent.com/u/104869030?v=4" alt="" />
@@ -16,7 +22,7 @@ export function Comment({content}) {
             </div>
 
             <button title="excluir comentario">
-              <Trash size={24}/>
+              <Trash onClick={handleDeleteComment} size={24}/>
             </button>
           </header>
           
